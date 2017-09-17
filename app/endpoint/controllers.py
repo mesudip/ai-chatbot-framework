@@ -63,6 +63,12 @@ def callApi(url, type, parameters,isJson=False):
 # Request Handler
 @endpoint.route('/v1', methods=['POST'])
 def api():
+    '''
+        Responds for each api call.
+        Like chat message etc.
+
+    :return:
+    '''
     requestJson = request.get_json(silent=True)
     resultJson = requestJson
 

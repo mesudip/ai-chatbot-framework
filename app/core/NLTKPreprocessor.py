@@ -10,7 +10,11 @@ from nltk import pos_tag
 from sklearn.base import BaseEstimator, TransformerMixin
 
 
+
 class NLTKPreprocessor(BaseEstimator, TransformerMixin):
+    '''
+        Class for preprocessing raw text inputs from user.
+    '''
 
     def __init__(self, stopwords=None, punct=None,
                  lower=True, strip=True):
@@ -27,11 +31,20 @@ class NLTKPreprocessor(BaseEstimator, TransformerMixin):
         return [" ".join(doc) for doc in X]
 
     def transform(self, X):
+
         return [
             list(self.tokenize(doc)) for doc in X
         ]
 
     def tokenize(self, document):
+        '''
+            Tokenizes the doucment. Sentences then each sentences into words.
+            yields each lemamatized tken one at a time.
+            Since one gets one after the other words, you will never know when a sentence ended.
+            Also returns the stop words.
+        :param document: Text
+        :return: yield of each token. it may be a stopword. POS tag wont be returned.
+        '''
         # Break the document into sentences
         for sent in sent_tokenize(document):
             # Break the sentence into part of speech tagged tokens
@@ -55,6 +68,12 @@ class NLTKPreprocessor(BaseEstimator, TransformerMixin):
                 yield lemma
 
     def lemmatize(self, token, tag):
+        '''
+            Since the nltk lemmatizer requires the word and Part Of Speech, it acts as adaptor for the function
+        :param token:
+        :param tag:
+        :return:
+        '''
         tag = {
             'N': wn.NOUN,
             'V': wn.VERB,

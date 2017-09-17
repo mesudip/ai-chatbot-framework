@@ -12,7 +12,7 @@ class Config(object):
     # Intent Classifier model detials
     MODELS_DIR = "model_files"
     INTENT_MODEL_NAME = "intent.model"
-    DEFAULT_FALLBACK_INTENT_NAME = "fallback"
+    DEFAULT_FALLBACK_INTENT_NAME = "fallback"	
     DEFAULT_WELCOME_INTENT_NAME = "init_conversation"
 
 class Development(Config):

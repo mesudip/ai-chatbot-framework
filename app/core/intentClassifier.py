@@ -4,6 +4,10 @@ from app.stories.models import Story
 from app import app
 
 class IntentClassifier(object):
+    '''
+    Classifies
+
+    '''
     def __init__(self):
         self.PATH = "{}/{}".format(app.config["MODELS_DIR"],
                                    app.config["INTENT_MODEL_NAME"])
